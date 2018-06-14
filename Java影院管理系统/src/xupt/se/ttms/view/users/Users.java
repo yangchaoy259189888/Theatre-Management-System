@@ -1,0 +1,244 @@
+package xupt.se.ttms.view.users;
+
+/**
+ * 管理系统用户界面
+ * @author 西邮陈冠希
+ */
+
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+import xupt.se.ttms.model.Employee;
+import xupt.se.ttms.service.EmployeeSrv;
+import xupt.se.ttms.view.systemManage.ManagerMgrUI;
+import xupt.se.ttms.view.viewUtil.ChangeBackground;
+
+public class Users {
+
+	public JFrame frame;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Users window = new Users();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Users() {
+		initialize();
+		ChangeBackground.addIcon(frame);
+		ChangeBackground.changeTopic();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame("管理系统用户");
+		frame.setBounds(100, 100, 800, 600);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel label = new JLabel("管理系统用户");
+		label.setBounds(238, 35, 355, 51);
+		label.setFont(new Font("隶书", Font.BOLD, 55));
+		frame.getContentPane().add(label);
+		
+		JLabel lblNewLabel = new JLabel("登录账号:");
+		lblNewLabel.setFont(new Font("楷体", Font.PLAIN, 20));
+		lblNewLabel.setBounds(52, 115, 95, 24);
+		frame.getContentPane().add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setEnabled(false);
+		textField.setFont(new Font("楷体", Font.PLAIN, 20));
+		textField.setBounds(149, 115, 225, 30);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("    姓名:");
+		lblNewLabel_1.setFont(new Font("楷体", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(408, 115, 95, 24);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setEnabled(false);
+		textField_1.setFont(new Font("楷体", Font.PLAIN, 20));
+		textField_1.setBounds(499, 114, 225, 30);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("    密码:");
+		lblNewLabel_2.setFont(new Font("楷体", Font.PLAIN, 20));
+		lblNewLabel_2.setBounds(52, 169, 95, 24);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		textField_2 = new JTextField();
+		textField_2.setEnabled(false);
+		textField_2.setFont(new Font("楷体", Font.PLAIN, 20));
+		textField_2.setBounds(149, 168, 225, 30);
+		frame.getContentPane().add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblNewLabel_3 = new JLabel("    职位:");
+		lblNewLabel_3.setFont(new Font("楷体", Font.PLAIN, 20));
+		lblNewLabel_3.setBounds(52, 272, 95, 24);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		textField_3 = new JTextField();
+		textField_3.setEnabled(false);
+		textField_3.setFont(new Font("楷体", Font.PLAIN, 20));
+		textField_3.setBounds(149, 271, 225, 30);
+		frame.getContentPane().add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblNewLabel_4 = new JLabel("    电话:");
+		lblNewLabel_4.setFont(new Font("楷体", Font.PLAIN, 20));
+		lblNewLabel_4.setBounds(52, 326, 95, 24);
+		frame.getContentPane().add(lblNewLabel_4);
+		
+		textField_4 = new JTextField();
+		textField_4.setEnabled(false);
+		textField_4.setFont(new Font("楷体", Font.PLAIN, 20));
+		textField_4.setBounds(148, 325, 226, 30);
+		frame.getContentPane().add(textField_4);
+		textField_4.setColumns(10);
+		
+		JLabel lblNewLabel_5 = new JLabel("家庭住址:");
+		lblNewLabel_5.setFont(new Font("楷体", Font.PLAIN, 20));
+		lblNewLabel_5.setBounds(52, 379, 95, 24);
+		frame.getContentPane().add(lblNewLabel_5);
+		
+		textField_5 = new JTextField();
+		textField_5.setEnabled(false);
+		textField_5.setFont(new Font("楷体", Font.PLAIN, 20));
+		textField_5.setBounds(149, 378, 225, 30);
+		frame.getContentPane().add(textField_5);
+		textField_5.setColumns(10);
+		
+		JLabel lblNewLabel_6 = new JLabel("    邮箱:");
+		lblNewLabel_6.setFont(new Font("楷体", Font.PLAIN, 20));
+		lblNewLabel_6.setBounds(52, 223, 95, 24);
+		frame.getContentPane().add(lblNewLabel_6);
+		
+		textField_6 = new JTextField();
+		textField_6.setEnabled(false);
+		textField_6.setFont(new Font("楷体", Font.PLAIN, 20));
+		textField_6.setBounds(149, 222, 225, 30);
+		frame.getContentPane().add(textField_6);
+		textField_6.setColumns(10);
+		
+		JLabel lblNewLabel_7 = new JLabel("    年龄:");
+		lblNewLabel_7.setFont(new Font("楷体", Font.PLAIN, 20));
+		lblNewLabel_7.setBounds(408, 169, 95, 24);
+		frame.getContentPane().add(lblNewLabel_7);
+		
+		textField_7 = new JTextField();
+		textField_7.setEnabled(false);
+		textField_7.setFont(new Font("楷体", Font.PLAIN, 20));
+		textField_7.setBounds(499, 168, 225, 30);
+		frame.getContentPane().add(textField_7);
+		textField_7.setColumns(10);
+		
+		JLabel lblNewLabel_8 = new JLabel("    性别:");
+		lblNewLabel_8.setFont(new Font("楷体", Font.PLAIN, 20));
+		lblNewLabel_8.setBounds(408, 228, 95, 24);
+		frame.getContentPane().add(lblNewLabel_8);
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("男");
+		rdbtnNewRadioButton.setEnabled(false);
+		rdbtnNewRadioButton.setFont(new Font("楷体", Font.PLAIN, 20));
+		rdbtnNewRadioButton.setBounds(524, 227, 56, 27);
+		frame.getContentPane().add(rdbtnNewRadioButton);
+		
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("女");
+		rdbtnNewRadioButton_1.setEnabled(false);
+		rdbtnNewRadioButton_1.setFont(new Font("楷体", Font.PLAIN, 20));
+		rdbtnNewRadioButton_1.setBounds(587, 227, 56, 27);
+		frame.getContentPane().add(rdbtnNewRadioButton_1);
+		
+		ButtonGroup  bg=new ButtonGroup();
+		bg.add(rdbtnNewRadioButton_1);
+		bg.add(rdbtnNewRadioButton);
+		
+		List<Employee> empList = new EmployeeSrv().printInfo();
+		textField.setText(empList.get(0).getEmp_No());
+		textField_1.setText(empList.get(0).getEmp_Name());
+		textField_2.setText(empList.get(0).getEmp_Password());
+		textField_3.setText(empList.get(0).getEmp_Position());
+		textField_4.setText(empList.get(0).getEmp_Tel_Num());
+		textField_5.setText(empList.get(0).getEmp_Addr());
+		textField_6.setText(empList.get(0).getEmp_Email());
+		textField_7.setText(empList.get(0).getEmp_Age());
+		
+		JButton btnNewButton_2 = new JButton("添加");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new UserAdd().frame.setVisible(true);
+				frame.dispose();
+			}
+		});
+		btnNewButton_2.setFont(new Font("楷体", Font.PLAIN, 25));
+		btnNewButton_2.setBounds(284, 474, 90, 39);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("修改");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new UserEdit().frame.setVisible(true);
+				frame.dispose();
+			}
+		});
+		btnNewButton_3.setFont(new Font("楷体", Font.PLAIN, 25));
+		btnNewButton_3.setBounds(433, 474, 90, 39);
+		frame.getContentPane().add(btnNewButton_3);
+		
+		JButton btnNewButton = new JButton("返回");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ManagerMgrUI().frame.setVisible(true);
+				frame.dispose();
+			}
+		});
+		btnNewButton.setFont(new Font("楷体", Font.PLAIN, 25));
+		btnNewButton.setBounds(571, 474, 90, 39);
+		frame.getContentPane().add(btnNewButton);
+		
+		if(empList.get(0).getEmp_Sex().equals("男") || empList.get(0).getEmp_Sex() == null) {
+			rdbtnNewRadioButton.setSelected(true);
+		} else {
+			rdbtnNewRadioButton_1.setSelected(true);
+		}
+	}
+}

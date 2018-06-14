@@ -1,0 +1,2 @@
+1.修改了tmpl目录下弹出式界面模板PopUITmpl.java中的Bug
+2.精简了StudioMgrUI.java 的设计。
